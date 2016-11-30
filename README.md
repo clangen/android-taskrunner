@@ -1,6 +1,7 @@
 # Introduction
 
 Most Android apps suffer from couple fundamental problems:
+
 1. **I/O on the main thread**: this results in slow screen loads, chunky scrolling, and in extreme cases, "Application Not Responding" dialogs which, to the end user, appear to be crashes.
 2. **Memory leaks**: usually caused by performing asynchronous operations with callbacks that are implicitly bound to their containing Activity via closure. That means that Activities (including all their Fragments and Views) are retained until the operation complete. In many cases this is no longer than a few seconds, but in some cases it can be as long as minutes. In the case of programmer error, they may leak indefinitely. As the user navigates around the app, these leaks begin to pile up, and can eventually lead to OutOfMemoryExceptions.
 3. **Modifying paused, destroyed components**: depending on timing, the callbacks described in (2) may be invoked while the UI component is in one of the following 'invalid' states:
@@ -12,6 +13,7 @@ Most Android apps suffer from couple fundamental problems:
 # What does TaskRunner do?
 
 TaskRunner does the following:
+
 1. Keeps track of its respective component's lifecycle and ensures completion events are not raised unless the component is in a valid (i.e. active) state.
 2. Ensures work is tracked/cached across screen rotations and other configuration changes
 3. Is designed to discourage implicit binding via closure to Activity instances
@@ -52,6 +54,7 @@ Interaction using an event bus library (e.g. Otto) may look like the following:
 [SEQUENCE DIAGRAM 3]
 
 Following this approach has the these benefits:
+
 1. **Services become easier to write** – no need to worry about multi-threading in most cases. All public methods can be synchronous.
 2. **Synchronous methods make the service layer easier to test**. You won't be required to create CountDownLatches with timeouts, or spin waiting for results.
 3. **Tasks are easily reusable**, and can be integrated into ViewModels easily.
@@ -129,6 +132,7 @@ private static class MyTask extends Tasks.Blocking<MyResultType, MyErrorType> {
 ```
 
 Some important notes:
+
 * Tasks are parameterized by two types: the `ResultType`, and an `ErrorType`.
 * All long-running work should be performed in the `ResultType exec(final Context context) throws MyErrorType` method.
 * You may pass data via constructor, but you should not retain anything that is implicitly (or explicitly) bound to the host Activity or Fragment.
@@ -182,10 +186,12 @@ The default cache mode is `CacheMode.None` (don't cache anything) and the defaul
 # Task best practices
 
 When writing tasks always do the following:
+
 1. Task subclasses that are inner classes should always be declared as static, as to not leak implicit references of their containing type
 2. Task subclasses should be extremely judicious about their inputs, and not accept anything that that explicitly, or implicitly references large objects (e.g. Views, Fragments, Activities, Bitmaps, etc).
 
 # Critique and future
+
 Although TaskRunner helps solve a couple fundamental issues with Android app development, it can certainly be better.
 
 Perhaps the biggest problem with TaskRunner is the proliferation of small wrapper classes that exist just to call through to service methods. While Tasks are generally easy to write, they do take time and are not exactly elegant. In the future we'd like to figure out a way to dynamically create Tasks at compile-time, perhaps leveraging some clever use of annotations. 
