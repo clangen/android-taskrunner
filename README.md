@@ -35,7 +35,7 @@ The following sequence diagram explains common behavior visually:
 
 Note: in this diagram Activity could instead be a Fragment, Service, or any other construct that needs a Runner.
 
-[SEQUENCE DIAGRAM 1]
+![sequence diagram 1](https://github.com/underarmour/android-taskrunner/blob/master/static/img/sequence_diagram_1.png?raw=true)
 
 # Integrating TaskRunner with your app
 
@@ -47,11 +47,11 @@ If you read the previous section you'll notice an emphasis on using Activities a
 
 A sequence diagram for this approach looks like the following:
 
-[SEQUENCE DIAGRAM 2]
+![sequence diagram 2](https://github.com/underarmour/android-taskrunner/blob/master/static/img/sequence_diagram_2.png?raw=true)
 
 Interaction using an event bus library (e.g. Otto) may look like the following:
 
-[SEQUENCE DIAGRAM 3]
+![sequence diagram 3](https://github.com/underarmour/android-taskrunner/blob/master/static/img/sequence_diagram_3.png?raw=true)
 
 Following this approach has the these benefits:
 
