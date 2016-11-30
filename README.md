@@ -2,9 +2,10 @@
 
 Most Android apps suffer from couple fundamental problems:
 
-1. **I/O on the main thread**: this results in slow screen loads, chunky scrolling, and in extreme cases, "Application Not Responding" dialogs which, to the end user, appear to be crashes.
-2. **Memory leaks**: usually caused by performing asynchronous operations with callbacks that are implicitly bound to their containing Activity via closure. That means that Activities (including all their Fragments and Views) are retained until the operation complete. In many cases this is no longer than a few seconds, but in some cases it can be as long as minutes. In the case of programmer error, they may leak indefinitely. As the user navigates around the app, these leaks begin to pile up, and can eventually lead to OutOfMemoryExceptions.
-3. **Modifying paused, destroyed components**: depending on timing, the callbacks described in (2) may be invoked while the UI component is in one of the following 'invalid' states:
+1. **Losing work or crashing during screen rotations**: Android makes it very difficult to manage asynchronous work across device rotations or configuration changes.
+2. **I/O on the main thread**: this results in slow screen loads, chunky scrolling, and in extreme cases, "Application Not Responding" dialogs which, to the end user, appear to be crashes.
+3. **Memory leaks**: usually caused by performing asynchronous operations with callbacks that are implicitly bound to their containing Activity via closure. That means that Activities (including all their Fragments and Views) are retained until the operation complete. In many cases this is no longer than a few seconds, but in some cases it can be as long as minutes. In the case of programmer error, they may leak indefinitely. As the user navigates around the app, these leaks begin to pile up, and can eventually lead to OutOfMemoryExceptions.
+4. **Modifying paused, destroyed components**: depending on timing, the callbacks described in (2) may be invoked while the UI component is in one of the following 'invalid' states:
     * *Paused*: modifying UI components while they are in the paused state leads to buggy behavior, especially for Fragments. The UI updates may be reverted by the platform automatically during the resume cycle.
     * *Destroyed*: the runtime will generally throw an exception if UI components are modified after they have been destroyed.
 
