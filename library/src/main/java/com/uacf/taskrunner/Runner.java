@@ -14,6 +14,15 @@
 * limitations under the License.
 */
 
+/*
+ * This code and any associated technical or intellectual concepts contained
+ * here are proprietary to Under Armour, Inc. and are covered by Intellectual
+ * Property laws, including but not limited to patents, trademarks, trade
+ * secrets and copyrights.  Dissemination of this information or any
+ * unauthorized duplication or replication without written consent from Under
+ * Armour is strictly prohibited.
+ */
+
 package com.uacf.taskrunner;
 
 import android.content.Context;
@@ -21,7 +30,12 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicLong;
 

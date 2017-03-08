@@ -14,12 +14,27 @@
 * limitations under the License.
 */
 
+/*
+ * This code and any associated technical or intellectual concepts contained
+ * here are proprietary to Under Armour, Inc. and are covered by Intellectual
+ * Property laws, including but not limited to patents, trademarks, trade
+ * secrets and copyrights.  Dissemination of this information or any
+ * unauthorized duplication or replication without written consent from Under
+ * Armour is strictly prohibited.
+ */
+
 package com.uacf.taskrunner;
 
 import android.os.Handler;
 import android.os.Looper;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**

@@ -14,6 +14,15 @@
 * limitations under the License.
 */
 
+/*
+ * This code and any associated technical or intellectual concepts contained
+ * here are proprietary to Under Armour, Inc. and are covered by Intellectual
+ * Property laws, including but not limited to patents, trademarks, trade
+ * secrets and copyrights.  Dissemination of this information or any
+ * unauthorized duplication or replication without written consent from Under
+ * Armour is strictly prohibited.
+ */
+
 package com.uacf.taskrunner;
 
 public class NotCompletedException extends RuntimeException {
