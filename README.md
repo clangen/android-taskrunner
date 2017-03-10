@@ -1,3 +1,5 @@
+TaskRunner is what AsyncTasks or Loaders would be like if they were implemented better. Whatever that means.
+
 # Introduction
 
 Most Android apps suffer from couple fundamental problems:
