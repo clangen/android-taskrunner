@@ -1,4 +1,4 @@
-TaskRunner is what AsyncTasks or Loaders would be like if they were implemented better. Whatever that means.
+TaskRunner is what AsyncTasks or Loaders would be like if they were designed around the way the Android runtime actually works.
 
 # Introduction
 
